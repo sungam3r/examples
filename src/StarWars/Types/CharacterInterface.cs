@@ -15,4 +15,18 @@ namespace StarWars.Types
             Field<ListGraphType<EpisodeEnum>>("appearsIn", "Which movie they appear in.");
         }
     }
+
+    public class CharacterInterface1 : InterfaceGraphType<StarWarsCharacter>
+    {
+        public CharacterInterface1()
+        {
+            Name = "Character1";
+
+            Field(d => d.Id).Description("The id of the character.");
+            Field(d => d.Name, nullable: true).Description("The name of the character.");
+
+            Field<ListGraphType<CharacterInterface1>>("friends");
+            Field<ListGraphType<EpisodeEnum1>>("appearsIn", "Which movie they appear in.");
+        }
+    }
 }

@@ -32,4 +32,23 @@ namespace StarWars
                 });
         }
     }
+
+    public class StarWarsMutation1 : ObjectGraphType
+    {
+        public StarWarsMutation1(StarWarsData data)
+        {
+            Name = "Mutation1";
+
+            Field<HumanType1>(
+                "createHuman",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<HumanInputType1>> { Name = "human" }
+                ),
+                resolve: context =>
+                {
+                    var human = context.GetArgument<Human>("human");
+                    return data.AddHuman(human);
+                });
+        }
+    }
 }

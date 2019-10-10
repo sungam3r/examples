@@ -12,4 +12,14 @@ namespace StarWars
             Field(x => x.HomePlanet, nullable: true);
         }
     }
+
+    public class HumanInputType1 : InputObjectGraphType<Human>
+    {
+        public HumanInputType1()
+        {
+            Name = "HumanInput1";
+            Field(x => x.Name);
+            Field(x => x.HomePlanet, nullable: true);
+        }
+    }
 }

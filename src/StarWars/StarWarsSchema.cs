@@ -13,4 +13,14 @@ namespace StarWars
             Mutation = provider.GetRequiredService<StarWarsMutation>();
         }
     }
+
+    public class StarWarsSchema1 : Schema
+    {
+        public StarWarsSchema1(IServiceProvider provider)
+            : base(provider)
+        {
+            Query = provider.GetRequiredService<StarWarsQuery1>();
+            Mutation = provider.GetRequiredService<StarWarsMutation1>();
+        }
+    }
 }

@@ -22,7 +22,16 @@ namespace Example
             services.AddSingleton<DroidType>();
             services.AddSingleton<CharacterInterface>();
             services.AddSingleton<EpisodeEnum>();
-            services.AddSingleton<ISchema, StarWarsSchema>();
+            services.AddSingleton<StarWarsSchema>();
+
+            services.AddSingleton<StarWarsQuery1>();
+            services.AddSingleton<StarWarsMutation1>();
+            services.AddSingleton<HumanType1>();
+            services.AddSingleton<HumanInputType1>();
+            services.AddSingleton<DroidType1>();
+            services.AddSingleton<CharacterInterface1>();
+            services.AddSingleton<EpisodeEnum1>();
+            services.AddSingleton<StarWarsSchema1>();
 
             services.AddLogging(builder => builder.AddConsole());
             services.AddHttpContextAccessor();
@@ -40,8 +49,8 @@ namespace Example
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            // add http for Schema at default url /graphql
-            app.UseGraphQL<ISchema>();
+            app.UseGraphQL<StarWarsSchema>("/s1");
+            app.UseGraphQL<StarWarsSchema1>("/s2");
 
             // use graphql-playground at default url /ui/playground
             app.UseGraphQLPlayground();

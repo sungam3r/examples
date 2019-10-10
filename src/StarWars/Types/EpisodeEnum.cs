@@ -20,4 +20,16 @@ namespace StarWars.Types
         EMPIRE  = 5,
         JEDI  = 6
     }
+
+    public class EpisodeEnum1 : EnumerationGraphType
+    {
+        public EpisodeEnum1()
+        {
+            Name = "Episode1";
+            Description = "One of the films in the Star Wars Trilogy.";
+            AddValue("NEWHOPE1", "Released in 1977.", 4);
+            AddValue("EMPIRE1", "Released in 1980.", 5);
+            AddValue("JEDI1", "Released in 1983.", 6);
+        }
+    }
 }

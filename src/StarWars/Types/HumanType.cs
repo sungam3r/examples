@@ -22,4 +22,25 @@ namespace StarWars.Types
             Interface<CharacterInterface>();
         }
     }
+
+    public class HumanType1 : ObjectGraphType<Human>
+    {
+        public HumanType1(StarWarsData data)
+        {
+            Name = "Human1";
+
+            Field(h => h.Id).Description("The id of the human.");
+            Field(h => h.Name, nullable: true).Description("The name of the human.");
+
+            Field<ListGraphType<CharacterInterface1>>(
+                "friends",
+                resolve: context => data.GetFriends(context.Source)
+            );
+            Field<ListGraphType<EpisodeEnum1>>("appearsIn", "Which movie they appear in.");
+
+            Field(h => h.HomePlanet, nullable: true).Description("The home planet of the human.");
+
+            Interface<CharacterInterface1>();
+        }
+    }
 }
